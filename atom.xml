@@ -2,100 +2,32 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://thinson.github.io</id>
     <title>秋名山8086</title>
-    <updated>2021-03-31T02:56:25.431Z</updated>
+    <updated>2021-08-17T02:46:54.426Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://thinson.github.io"/>
     <link rel="self" href="https://thinson.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>记录生活的点点滴滴
+&lt;script&gt;
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement(&quot;script&quot;);
+  hm.src = &quot;https://hm.baidu.com/hm.js?5f99938cd863204466924bd9a1176579&quot;;
+  var s = document.getElementsByTagName(&quot;script&quot;)[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+&lt;/script&gt;</subtitle>
     <logo>https://thinson.github.io/images/avatar.png</logo>
     <icon>https://thinson.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 秋名山8086</rights>
     <entry>
-        <title type="html"><![CDATA[numpy基本用法]]></title>
-        <id>https://thinson.github.io/post/numpy-ji-ben-yong-fa/</id>
-        <link href="https://thinson.github.io/post/numpy-ji-ben-yong-fa/">
+        <title type="html"><![CDATA[Hello World!]]></title>
+        <id>https://thinson.github.io/post/hello-world/</id>
+        <link href="https://thinson.github.io/post/hello-world/">
         </link>
-        <updated>2021-03-31T02:25:24.000Z</updated>
-        <content type="html"><![CDATA[<p>本文用到的代码整理如下：<br /><a href="https://www.yuque.com/attachments/yuque/0/2021/ipynb/2201071/1617090808276-5b91fdbf-afbc-4af6-8914-2df0a9ace4ef.ipynb?_lake_card=%7B%22uid%22%3A%221617090808127-0%22%2C%22src%22%3A%22https%3A%2F%2Fwww.yuque.com%2Fattachments%2Fyuque%2F0%2F2021%2Fipynb%2F2201071%2F1617090808276-5b91fdbf-afbc-4af6-8914-2df0a9ace4ef.ipynb%22%2C%22name%22%3A%22numpy%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8.ipynb%22%2C%22size%22%3A10210%2C%22type%22%3A%22%22%2C%22ext%22%3A%22ipynb%22%2C%22progress%22%3A%7B%22percent%22%3A99%7D%2C%22status%22%3A%22done%22%2C%22percent%22%3A0%2C%22id%22%3A%22r8zoa%22%2C%22card%22%3A%22file%22%7D">numpy的基本使用.ipynb</a><br>
-<a name="pfvjS"></a></p>
-<h1 id="创建-or-类型转换">创建 or 类型转换</h1>
-<p><a name="SajnO"></a></p>
-<h2 id="创建矩阵dim1">创建矩阵(dim=1)</h2>
-<p>np.array() 直接创建：<br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617072885372-e6b6170d-58e0-4d25-908e-f08a492a6fd1.png#align=left&amp;display=inline&amp;height=246&amp;margin=%5Bobject%20Object%5D&amp;originHeight=246&amp;originWidth=710&amp;size=0&amp;status=done&amp;style=none&amp;width=710" alt="" loading="lazy"><br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617072934052-f2f94561-7d59-4c11-9c12-6fe12a895c72.png#align=left&amp;display=inline&amp;height=95&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=95&amp;originWidth=346&amp;size=2825&amp;status=done&amp;style=none&amp;width=346" alt="image.png" loading="lazy"><br /><br>
-<br />使用 np.ones()、np.zeros() 等方法：</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617072958515-5f467346-053c-4b6e-a7d5-c312871d09e0.png#align=left&amp;display=inline&amp;height=240&amp;margin=%5Bobject%20Object%5D&amp;originHeight=240&amp;originWidth=1080&amp;size=0&amp;status=done&amp;style=none&amp;width=1080" alt="" loading="lazy"><br /><br>
-<img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617073523002-91556ec3-5aed-4d34-9b0e-a24170446336.png#align=left&amp;display=inline&amp;height=151&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=302&amp;originWidth=875&amp;size=17228&amp;status=done&amp;style=none&amp;width=437.5" alt="image.png" loading="lazy"><br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617073525094-776a967d-4112-437d-a408-991ab5e473d8.png#align=left&amp;display=inline&amp;height=151&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=302&amp;originWidth=875&amp;size=17228&amp;status=done&amp;style=none&amp;width=437.5" alt="image.png" loading="lazy"><br>
-<a name="5ROqI"></a></p>
-<h2 id="创建矩阵dim1-2">创建矩阵（dim&gt;1)</h2>
-<p><code>np.array()</code>,先行后列<br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617073651263-3a080669-2639-4ef1-8bd0-5e6fa77ad963.png#align=left&amp;display=inline&amp;height=147&amp;margin=%5Bobject%20Object%5D&amp;originHeight=147&amp;originWidth=723&amp;size=0&amp;status=done&amp;style=none&amp;width=723" alt="" loading="lazy"><br />使用 <code>np.ones()</code>、<code>np.zeros()</code>等方法：先行后列</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617073984357-d74cdb55-b93e-4492-b5e8-9af9578e9af0.png#align=left&amp;display=inline&amp;height=194&amp;margin=%5Bobject%20Object%5D&amp;originHeight=194&amp;originWidth=1080&amp;size=0&amp;status=done&amp;style=none&amp;width=1080" alt="" loading="lazy"><br /><br>
-<br /><br>
-<br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617074094580-328b2937-4250-4c63-971f-347a839ea367.png#align=left&amp;display=inline&amp;height=397&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=397&amp;originWidth=747&amp;size=19465&amp;status=done&amp;style=none&amp;width=747" alt="image.png" loading="lazy"><br>
-<a name="ycv82"></a></p>
-<h2 id="矩阵的类型转化">矩阵的类型转化</h2>
-<p><code>xxx.astype()</code><br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617074204602-fc2b0293-3602-4cd0-9d8d-c334825e4da0.png#align=left&amp;display=inline&amp;height=357&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=357&amp;originWidth=549&amp;size=15424&amp;status=done&amp;style=none&amp;width=549" alt="image.png" loading="lazy"><br /></p>
-<p><a name="CLWzW"></a></p>
-<h1 id="矩阵的运算">矩阵的运算</h1>
-<p><a name="3TzL7"></a></p>
-<h2 id="加减">加减</h2>
-<p>行列均适用<br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617074292393-34702411-085f-4653-ac49-0e2d820548c3.png#align=left&amp;display=inline&amp;height=165&amp;margin=%5Bobject%20Object%5D&amp;originHeight=165&amp;originWidth=777&amp;size=0&amp;status=done&amp;style=none&amp;width=777" alt="" loading="lazy"><br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617074305804-f9ed4c09-71cf-46fa-89ad-eca8ae3763b6.png#align=left&amp;display=inline&amp;height=196&amp;margin=%5Bobject%20Object%5D&amp;originHeight=196&amp;originWidth=1080&amp;size=0&amp;status=done&amp;style=none&amp;width=1080" alt="" loading="lazy"><br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617074359574-c39ea6d5-c731-4c92-84f6-9aa6024e7fb1.png#align=left&amp;display=inline&amp;height=564&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=564&amp;originWidth=845&amp;size=24636&amp;status=done&amp;style=none&amp;width=845" alt="image.png" loading="lazy"><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617074408745-928dddc7-e1a9-4b4f-83d9-4f13d0c91ca5.png#align=left&amp;display=inline&amp;height=577&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=577&amp;originWidth=660&amp;size=22095&amp;status=done&amp;style=none&amp;width=660" alt="image.png" loading="lazy"><br>
-<a name="t27Fy"></a></p>
-<h2 id="点积">点积</h2>
-<p>线性代数矩阵相乘 <code>xxx.dot(yyy)</code><br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617074473458-5582faa3-f54b-460e-b566-6307cff97584.png#align=left&amp;display=inline&amp;height=257&amp;margin=%5Bobject%20Object%5D&amp;originHeight=257&amp;originWidth=1029&amp;size=0&amp;status=done&amp;style=none&amp;width=1029" alt="" loading="lazy"><br /></p>
-<p><a name="5e2941e1"></a></p>
-<h2 id="按位相乘">按位相乘</h2>
-<p>直接用<code>*</code><br /><strong><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617074641467-4d602ada-334d-495d-b2c2-234ff7e783fa.png#align=left&amp;display=inline&amp;height=411&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=411&amp;originWidth=710&amp;size=17100&amp;status=done&amp;style=none&amp;width=710" alt="image.png" loading="lazy"></strong><br /><strong>索引</strong>，可以使用判断符号进行筛选，不过会损失空间信息。<br /><strong><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617087487425-1bfabf3c-06ad-4775-bdb9-861bc2fa4a5a.png#align=left&amp;display=inline&amp;height=151&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=301&amp;originWidth=939&amp;size=48781&amp;status=done&amp;style=none&amp;width=469.5" alt="image.png" loading="lazy"></strong><br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617087717027-35de9931-23ae-46de-97d9-349b3646b715.png#align=left&amp;display=inline&amp;height=218&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=218&amp;originWidth=594&amp;size=8786&amp;status=done&amp;style=none&amp;width=594" alt="image.png" loading="lazy"><br>
-<a name="etegU"></a></p>
-<h2 id="求最值">求最值</h2>
-<p><strong><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617087846315-67d6273e-20be-4b55-973c-0288852d0ffd.png#align=left&amp;display=inline&amp;height=617&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=617&amp;originWidth=973&amp;size=69779&amp;status=done&amp;style=none&amp;width=973" alt="image.png" loading="lazy"></strong><br /><strong><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617088395187-fece41b7-26b0-4ba0-96a8-84f2a1c447b9.png#align=left&amp;display=inline&amp;height=332&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=332&amp;originWidth=567&amp;size=13330&amp;status=done&amp;style=none&amp;width=567" alt="image.png" loading="lazy"></strong><br>
-<a name="7W7vI"></a></p>
-<h2 id="转置">转置</h2>
-<p><code>xxx.T</code><br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617089108934-763a94e6-7aca-46e9-8bfd-c83305ee4f9d.png#align=left&amp;display=inline&amp;height=254&amp;margin=%5Bobject%20Object%5D&amp;originHeight=254&amp;originWidth=632&amp;size=0&amp;status=done&amp;style=none&amp;width=632" alt="" loading="lazy"><br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617089145765-4aa8cdd6-40c2-4a5c-87d6-f4a05c35228c.png#align=left&amp;display=inline&amp;height=168&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=168&amp;originWidth=659&amp;size=6015&amp;status=done&amp;style=none&amp;width=659" alt="image.png" loading="lazy"><br>
-<a name="Ddj1z"></a></p>
-<h2 id="reshape">reshape</h2>
-<p><code>xxx.reshape</code> 和<strong>转置并不一样</strong><br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617089424055-dd97d5f1-1dff-4d4e-b108-20474089b10d.png#align=left&amp;display=inline&amp;height=399&amp;margin=%5Bobject%20Object%5D&amp;originHeight=399&amp;originWidth=1080&amp;size=0&amp;status=done&amp;style=none&amp;width=1080" alt="" loading="lazy"><br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617089397371-e0bb3adf-5f21-42c1-9222-5eccc7153073.png#align=left&amp;display=inline&amp;height=355&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=355&amp;originWidth=602&amp;size=12338&amp;status=done&amp;style=none&amp;width=602" alt="image.png" loading="lazy"><br /></p>
-<p><a name="wSinB"></a></p>
-<h1 id="矩阵的条件选择">矩阵的条件选择</h1>
-<p><a name="rfuAd"></a></p>
-<h2 id="npwherecondition-x-y">np.where(condition, x, y)</h2>
-<p>满足条件(condition)，输出x，不满足输出y。<br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617090497807-6386438a-084a-4d18-ad13-997416603d05.png#align=left&amp;display=inline&amp;height=181&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=181&amp;originWidth=865&amp;size=10521&amp;status=done&amp;style=none&amp;width=865" alt="image.png" loading="lazy"><br>
-<a name="NjUiu"></a></p>
-<h2 id="npwherecondition">np.where(condition)</h2>
-<p>只有条件 (condition)，没有x和y，则输出满足条件 (即非0) 元素的坐标 (等价于<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.nonzero.html#numpy.nonzero">numpy.nonzero</a>)。这里的坐标以tuple的形式给出，通常原数组有多少维，输出的tuple中就包含几个数组，分别对应符合条件元素的各维坐标。<br /><img src="https://cdn.nlark.com/yuque/0/2021/png/2201071/1617090556888-592fa5f3-ce0b-440e-b2a5-04c78cccd118.png#align=left&amp;display=inline&amp;height=113&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=113&amp;originWidth=534&amp;size=5154&amp;status=done&amp;style=none&amp;width=534" alt="image.png" loading="lazy"><br /><br>
-<br /><br>
-<br /></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://thinson.github.io/post/hello-gridea/</id>
-        <link href="https://thinson.github.io/post/hello-gridea/">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+        <updated>2021-08-17T02:36:30.000Z</updated>
+        <summary type="html"><![CDATA[<p>这是我的第一篇博客，感谢关注，以后尽量经常更新~</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+        <content type="html"><![CDATA[<p>这是我的第一篇博客，感谢关注，以后尽量经常更新~</p>
 ]]></content>
     </entry>
 </feed>
