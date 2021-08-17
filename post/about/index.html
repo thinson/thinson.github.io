@@ -21,10 +21,16 @@ var _hmt = _hmt || [];
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://thinson.github.io/favicon.ico?v=1629168356242">
+<link rel="shortcut icon" href="https://thinson.github.io/favicon.ico?v=1629169194693">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://thinson.github.io/styles/main.css">
 
+
+  
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css" />
+  
 
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -39,7 +45,7 @@ var _hmt = _hmt || [];
   <div class="site-header">
     <div class="left">
       <a href="https://thinson.github.io">
-        <img class="avatar" src="https://thinson.github.io/images/avatar.png?v=1629168356242" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://thinson.github.io/images/avatar.png?v=1629169194693" alt="" width="32px" height="32px">
       </a>
       <a href="https://thinson.github.io">
         <h1 class="site-title">秋名山8086</h1>
@@ -114,6 +120,12 @@ var _hmt = _hmt || [];
       </div>
 
       
+        
+
+        
+          <div id="disqus_thread"></div>
+        
+      
 
       <div class="site-footer">
   <div class="slogan">记录生活的点点滴滴
@@ -156,6 +168,26 @@ var app = new Vue({
 })
 
 </script>
+
+
+
+  
+
+  
+    <script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+    <script>
+
+    var options = {
+      shortname: 'kang wu',
+      apikey: 's5Zw93bVxgzjICNttESqB8TyplmkV1Ao3RaxZ9qX3ks7xpkJBBsFniNtnc9TwmAR',
+    }
+    if ('https://disqus.com/api/oauth/2.0/authorize/') {
+      options.api = 'https://disqus.com/api/oauth/2.0/authorize/'
+    }
+    var dsqjs = new DisqusJS(options)
+
+    </script>
+  
 
 
 
