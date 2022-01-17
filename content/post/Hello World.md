@@ -1,7 +1,7 @@
 ---
 title: "Hello World!"
-date: 2022-01-17T17:21:00+08:00
-lastmod: 2022-01-17T17:21:00+08:00
+date: 2022-01-17
+lastmod: 2022-01-17
 draft: false
 tags: ["生活"]
 categories: ["生活"]

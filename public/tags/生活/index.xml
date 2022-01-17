@@ -6,11 +6,11 @@
     <description>Recent content in 生活 on Kang&#39;s Blog💻</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 17 Jan 2022 17:21:00 +0800</lastBuildDate><atom:link href="https://thinson.github.io/tags/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thinson.github.io/tags/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello World!</title>
       <link>https://thinson.github.io/post/hello-world/</link>
-      <pubDate>Mon, 17 Jan 2022 17:21:00 +0800</pubDate>
+      <pubDate>Mon, 17 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://thinson.github.io/post/hello-world/</guid>
       <description>之前的博客闲置太久，源文件丢失，所以用hugo重新组织了我的博客，欢迎大家!</description>

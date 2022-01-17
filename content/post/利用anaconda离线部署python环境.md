@@ -1,7 +1,7 @@
 ---
 title: "利用anaconda离线部署python环境"
-date: 2022-01-01T17:21:00+08:00
-lastmod: 2022-01-01T17:21:00+08:00
+date: 2022-01-17T17:21:00+08:00
+lastmod: 2022-01-17T17:21:00+08:00
 draft: false
 tags: ["python", "环境"]
 categories: ["Python"]

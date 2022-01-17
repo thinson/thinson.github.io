@@ -6,14 +6,14 @@
     <description>Recent content in Posts on Kang&#39;s Blog💻</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 17 Jan 2022 17:21:00 +0800</lastBuildDate><atom:link href="https://thinson.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Jan 2022 18:21:00 +0800</lastBuildDate><atom:link href="https://thinson.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hello World!</title>
-      <link>https://thinson.github.io/post/hello-world/</link>
-      <pubDate>Mon, 17 Jan 2022 17:21:00 +0800</pubDate>
+      <title>[论文阅读]Co-teaching</title>
+      <link>https://thinson.github.io/post/co-teaching/</link>
+      <pubDate>Mon, 17 Jan 2022 18:21:00 +0800</pubDate>
       
-      <guid>https://thinson.github.io/post/hello-world/</guid>
-      <description>之前的博客闲置太久，源文件丢失，所以用hugo重新组织了我的博客，欢迎大家!</description>
+      <guid>https://thinson.github.io/post/co-teaching/</guid>
+      <description>作者 第一完成单位为悉尼科技大学 论文：https://arxiv.org/pdf/1804.06872.pdf 代码： https://github.com/bhanML/Co-teaching 背景 co-teachin</description>
     </item>
     
     <item>
@@ -26,21 +26,21 @@
     </item>
     
     <item>
-      <title>[论文阅读]Co-teaching</title>
-      <link>https://thinson.github.io/post/co-teaching/</link>
-      <pubDate>Mon, 17 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://thinson.github.io/post/co-teaching/</guid>
-      <description>作者 第一完成单位为悉尼科技大学 论文：https://arxiv.org/pdf/1804.06872.pdf 代码： https://github.com/bhanML/Co-teaching 背景 co-teachin</description>
-    </item>
-    
-    <item>
       <title>利用anaconda离线部署python环境</title>
       <link>https://thinson.github.io/post/%E5%88%A9%E7%94%A8anaconda%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2python%E7%8E%AF%E5%A2%83/</link>
-      <pubDate>Sat, 01 Jan 2022 17:21:00 +0800</pubDate>
+      <pubDate>Mon, 17 Jan 2022 17:21:00 +0800</pubDate>
       
       <guid>https://thinson.github.io/post/%E5%88%A9%E7%94%A8anaconda%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2python%E7%8E%AF%E5%A2%83/</guid>
       <description>将开发机的python开发环境部署到业务机的离线生产环境通常是比较困难的。python版本，软件包的版本和各种依赖环境都要较为严格的保持一致</description>
+    </item>
+    
+    <item>
+      <title>Hello World!</title>
+      <link>https://thinson.github.io/post/hello-world/</link>
+      <pubDate>Mon, 17 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://thinson.github.io/post/hello-world/</guid>
+      <description>之前的博客闲置太久，源文件丢失，所以用hugo重新组织了我的博客，欢迎大家!</description>
     </item>
     
   </channel>
