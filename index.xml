@@ -2,14 +2,33 @@
 &lt;p>&lt;code>awk&lt;/code>其实不仅仅是工具软件，还是一种编程语言。&lt;/p>
 &lt;p>用来处理linux系统下的文档&lt;/p>
 &lt;h3 id="基本使用">基本使用&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">awk 条件 动作 文件名
-&lt;span style="color:#75715e"># 可以没有条件&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">awk -F &lt;span style="color:#e6db74">&amp;#39;:&amp;#39;&lt;/span> &lt;span style="color:#e6db74">&amp;#39;{print NR &amp;#34;) &amp;#34; $1}&amp;#39;&lt;/span> demo.txt
-&lt;span style="color:#75715e"># 语句用&amp;#39;&amp;#39;隔开，&amp;#39;&amp;#39;内部字符用引号&lt;/span>
-&lt;span style="color:#75715e"># NR表示当前行数&lt;/span>
-&lt;span style="color:#75715e"># -F 表示分隔符是什么&lt;/span>
-awk -F &lt;span style="color:#e6db74">&amp;#39;:&amp;#39;&lt;/span> &lt;span style="color:#e6db74">&amp;#39;{if($1&amp;lt;&amp;#34;m&amp;#34;) print NR &amp;#34;&amp;gt;&amp;#34; $1; else print &amp;#34;____&amp;#34;}&amp;#39;&lt;/span> user.txt
-&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>[论文阅读]Co-teaching</title><link>https://thinson.github.io/post/co-teaching/</link><pubDate>Mon, 17 Jan 2022 00:00:00 +0000</pubDate><guid>https://thinson.github.io/post/co-teaching/</guid><description>&lt;h2 id="作者">作者&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">awk 条件 动作 文件名
+&lt;span class="c1"># 可以没有条件&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">awk -F &lt;span class="s1">&amp;#39;:&amp;#39;&lt;/span> &lt;span class="s1">&amp;#39;{print NR &amp;#34;) &amp;#34; $1}&amp;#39;&lt;/span> demo.txt
+&lt;span class="c1"># 语句用&amp;#39;&amp;#39;隔开，&amp;#39;&amp;#39;内部字符用引号&lt;/span>
+&lt;span class="c1"># NR表示当前行数&lt;/span>
+&lt;span class="c1"># -F 表示分隔符是什么&lt;/span>
+awk -F &lt;span class="s1">&amp;#39;:&amp;#39;&lt;/span> &lt;span class="s1">&amp;#39;{if($1&amp;lt;&amp;#34;m&amp;#34;) print NR &amp;#34;&amp;gt;&amp;#34; $1; else print &amp;#34;____&amp;#34;}&amp;#39;&lt;/span> user.txt
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>[论文阅读]Co-teaching</title><link>https://thinson.github.io/post/co-teaching/</link><pubDate>Mon, 17 Jan 2022 00:00:00 +0000</pubDate><guid>https://thinson.github.io/post/co-teaching/</guid><description>&lt;h2 id="作者">作者&lt;/h2>
 &lt;p>第一完成单位为悉尼科技大学
 论文：https://arxiv.org/pdf/1804.06872.pdf
 代码： &lt;a href="https://github.com/bhanML/Co-teaching">https://github.com/bhanML/Co-teaching&lt;/a>&lt;/p>
@@ -30,31 +49,76 @@ Co-teaching的思想相当于把当前网络认为clean的样本交给另外的�
 &lt;h2 id="代码">代码&lt;/h2>
 &lt;p>核心代码为梯度互相更新的部分, 相当于先对每个网络各求了loss，再对loss进行排序，选取最低的一定比例交给另一个网络进行反向传播。&lt;/p>
 &lt;p>loss部分代码如下：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-python" data-lang="python">&lt;span style="color:#75715e"># Loss functions&lt;/span>
-&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">loss_coteaching&lt;/span>(y_1, y_2, t, forget_rate, ind, noise_or_not):
-loss_1 &lt;span style="color:#f92672">=&lt;/span> F&lt;span style="color:#f92672">.&lt;/span>cross_entropy(y_1, t, reduce &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">False&lt;/span>)
-ind_1_sorted &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>argsort(loss_1&lt;span style="color:#f92672">.&lt;/span>data)&lt;span style="color:#f92672">.&lt;/span>cuda()
-loss_1_sorted &lt;span style="color:#f92672">=&lt;/span> loss_1[ind_1_sorted]
-loss_2 &lt;span style="color:#f92672">=&lt;/span> F&lt;span style="color:#f92672">.&lt;/span>cross_entropy(y_2, t, reduce &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">False&lt;/span>)
-ind_2_sorted &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>argsort(loss_2&lt;span style="color:#f92672">.&lt;/span>data)&lt;span style="color:#f92672">.&lt;/span>cuda()
-loss_2_sorted &lt;span style="color:#f92672">=&lt;/span> loss_2[ind_2_sorted]
-remember_rate &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">-&lt;/span> forget_rate
-num_remember &lt;span style="color:#f92672">=&lt;/span> int(remember_rate &lt;span style="color:#f92672">*&lt;/span> len(loss_1_sorted))
-pure_ratio_1 &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>sum(noise_or_not[ind[ind_1_sorted[:num_remember]]])&lt;span style="color:#f92672">/&lt;/span>float(num_remember)
-pure_ratio_2 &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>sum(noise_or_not[ind[ind_2_sorted[:num_remember]]])&lt;span style="color:#f92672">/&lt;/span>float(num_remember)
-ind_1_update&lt;span style="color:#f92672">=&lt;/span>ind_1_sorted[:num_remember]
-ind_2_update&lt;span style="color:#f92672">=&lt;/span>ind_2_sorted[:num_remember]
-&lt;span style="color:#75715e"># exchange&lt;/span>
-loss_1_update &lt;span style="color:#f92672">=&lt;/span> F&lt;span style="color:#f92672">.&lt;/span>cross_entropy(y_1[ind_2_update], t[ind_2_update])
-loss_2_update &lt;span style="color:#f92672">=&lt;/span> F&lt;span style="color:#f92672">.&lt;/span>cross_entropy(y_2[ind_1_update], t[ind_1_update])
-&lt;span style="color:#66d9ef">return&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>sum(loss_1_update)&lt;span style="color:#f92672">/&lt;/span>num_remember, torch&lt;span style="color:#f92672">.&lt;/span>sum(loss_2_update)&lt;span style="color:#f92672">/&lt;/span>num_remember, pure_ratio_1, pure_ratio_2
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>forget rate更新代码：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-python" data-lang="python">&lt;span style="color:#75715e"># define drop rate schedule&lt;/span>
-rate_schedule &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>ones(args&lt;span style="color:#f92672">.&lt;/span>n_epoch)&lt;span style="color:#f92672">*&lt;/span>forget_rate
-rate_schedule[:args&lt;span style="color:#f92672">.&lt;/span>num_gradual] &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>linspace(&lt;span style="color:#ae81ff">0&lt;/span>, forget_rate&lt;span style="color:#f92672">**&lt;/span>args&lt;span style="color:#f92672">.&lt;/span>exponent, args&lt;span style="color:#f92672">.&lt;/span>num_gradual)
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>调用：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-python" data-lang="python">loss_1, loss_2, pure_ratio_1, pure_ratio_2 &lt;span style="color:#f92672">=&lt;/span> loss_coteaching(logits1, logits2, labels, rate_schedule[epoch], ind, noise_or_not)
-&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>利用anaconda离线部署python环境</title><link>https://thinson.github.io/post/%E5%88%A9%E7%94%A8anaconda%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2python%E7%8E%AF%E5%A2%83/</link><pubDate>Sat, 01 Jan 2022 17:21:00 +0800</pubDate><guid>https://thinson.github.io/post/%E5%88%A9%E7%94%A8anaconda%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2python%E7%8E%AF%E5%A2%83/</guid><description>&lt;blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="c1"># Loss functions&lt;/span>
+&lt;span class="k">def&lt;/span> &lt;span class="nf">loss_coteaching&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">y_1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y_2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">t&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">forget_rate&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ind&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">noise_or_not&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;span class="n">loss_1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">F&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cross_entropy&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">y_1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">t&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">reduce&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">False&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="n">ind_1_sorted&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">argsort&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">loss_1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">data&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cuda&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;span class="n">loss_1_sorted&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">loss_1&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">ind_1_sorted&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;span class="n">loss_2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">F&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cross_entropy&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">y_2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">t&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">reduce&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">False&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="n">ind_2_sorted&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">argsort&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">loss_2&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">data&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cuda&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;span class="n">loss_2_sorted&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">loss_2&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">ind_2_sorted&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;span class="n">remember_rate&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="n">forget_rate&lt;/span>
+&lt;span class="n">num_remember&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">remember_rate&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="nb">len&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">loss_1_sorted&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;span class="n">pure_ratio_1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sum&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">noise_or_not&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">ind&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">ind_1_sorted&lt;/span>&lt;span class="p">[:&lt;/span>&lt;span class="n">num_remember&lt;/span>&lt;span class="p">]]])&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nb">float&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">num_remember&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="n">pure_ratio_2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sum&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">noise_or_not&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">ind&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">ind_2_sorted&lt;/span>&lt;span class="p">[:&lt;/span>&lt;span class="n">num_remember&lt;/span>&lt;span class="p">]]])&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nb">float&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">num_remember&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="n">ind_1_update&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">ind_1_sorted&lt;/span>&lt;span class="p">[:&lt;/span>&lt;span class="n">num_remember&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;span class="n">ind_2_update&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">ind_2_sorted&lt;/span>&lt;span class="p">[:&lt;/span>&lt;span class="n">num_remember&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;span class="c1"># exchange&lt;/span>
+&lt;span class="n">loss_1_update&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">F&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cross_entropy&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">y_1&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">ind_2_update&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="n">t&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">ind_2_update&lt;/span>&lt;span class="p">])&lt;/span>
+&lt;span class="n">loss_2_update&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">F&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cross_entropy&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">y_2&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">ind_1_update&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="n">t&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">ind_1_update&lt;/span>&lt;span class="p">])&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="n">torch&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sum&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">loss_1_update&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">num_remember&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">torch&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sum&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">loss_2_update&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">num_remember&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pure_ratio_1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pure_ratio_2&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>forget rate更新代码：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="c1"># define drop rate schedule&lt;/span>
+&lt;span class="n">rate_schedule&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ones&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">args&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">n_epoch&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">forget_rate&lt;/span>
+&lt;span class="n">rate_schedule&lt;/span>&lt;span class="p">[:&lt;/span>&lt;span class="n">args&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">num_gradual&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">linspace&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">forget_rate&lt;/span>&lt;span class="o">**&lt;/span>&lt;span class="n">args&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">exponent&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">args&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">num_gradual&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>调用：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="n">loss_1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">loss_2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pure_ratio_1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pure_ratio_2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">loss_coteaching&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">logits1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">logits2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">labels&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">rate_schedule&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">epoch&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="n">ind&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">noise_or_not&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>利用anaconda离线部署python环境</title><link>https://thinson.github.io/post/%E5%88%A9%E7%94%A8anaconda%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2python%E7%8E%AF%E5%A2%83/</link><pubDate>Sat, 01 Jan 2022 17:21:00 +0800</pubDate><guid>https://thinson.github.io/post/%E5%88%A9%E7%94%A8anaconda%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2python%E7%8E%AF%E5%A2%83/</guid><description>&lt;blockquote>
 &lt;p>将开发机的&lt;strong>python开发环境&lt;/strong>部署到业务机的&lt;strong>离线生产环境&lt;/strong>通常是比较困难的。python版本，软件包的版本和各种依赖环境都要较为严格的保持一致。如果不是十分小心，很容易就会陷入各种链接错误等。如何比较简便的进行python环境的离线迁移呢？本文基于anaconda的包管理功能，提供一种较为简便的环境迁移方法。&lt;/p>
 &lt;/blockquote>
 &lt;h3 id="思路">思路&lt;/h3>
@@ -65,13 +129,25 @@ rate_schedule[:args&lt;span style="color:#f92672">.&lt;/span>num_gradual] &lt;sp
 &lt;ol>
 &lt;li>
 &lt;p>开发机使用conda创建好对应的虚拟环境，并安装必要的包。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">&lt;span style="color:#75715e"># 创建并激活环境&lt;/span>
-conda create -n OCEAN python&lt;span style="color:#f92672">=&lt;/span>3.6
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="c1"># 创建并激活环境&lt;/span>
+conda create -n OCEAN &lt;span class="nv">python&lt;/span>&lt;span class="o">=&lt;/span>3.6
 conda activate OCEAN
-&lt;span style="color:#75715e"># 安装必要的包&lt;/span>
+&lt;span class="c1"># 安装必要的包&lt;/span>
 pip install xxx
 conda install xxx
-&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
 &lt;li>
 &lt;p>开发机器的环境打包&lt;/p>
 &lt;p>首先&lt;code>conda info -e&lt;/code>找到对应包的位置。如图，我的环境在&lt;code>/home/wukang/.conda/envs/OCEAN&lt;/code> 目录下。&lt;/p>
@@ -87,15 +163,30 @@ conda install xxx
 &lt;/li>
 &lt;li>
 &lt;p>创建和开发机器&lt;strong>同名&lt;/strong>的虚拟环境，一定要同名，否则后续会出问题。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">&lt;span style="color:#75715e"># 从base环境克隆出和开发环境同名的OCEAN环境&lt;/span>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="c1"># 从base环境克隆出和开发环境同名的OCEAN环境&lt;/span>
 conda create -n OCEAN --clone base
-&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
 &lt;li>
 &lt;p>解压环境。&lt;code>tar xvf OCEAN_ENVS.tar /home/xxx/miniconda/envs/ &lt;/code>&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>激活环境。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">source activate OCEAN
-&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="nb">source&lt;/span> activate OCEAN
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
 &lt;/ol>
 &lt;p>至此，业务机的环境克隆就已经完成。&lt;/p></description></item></channel></rss>

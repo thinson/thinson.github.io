@@ -29,7 +29,7 @@
 <meta itemprop=name content="利用anaconda离线部署python环境">
 <meta itemprop=description content="将开发机的python开发环境部署到业务机的离线生产环境通常是比较困难的。python版本，软件包的版本和各种依赖环境都要较为严格的保持一致"><meta itemprop=datePublished content="2022-01-01T17:21:00+08:00">
 <meta itemprop=dateModified content="2022-01-01T17:21:00+08:00">
-<meta itemprop=wordCount content="552">
+<meta itemprop=wordCount content="561">
 <meta itemprop=keywords content="python,环境,"><meta name=twitter:card content="summary">
 <meta name=twitter:title content="利用anaconda离线部署python环境">
 <meta name=twitter:description content="将开发机的python开发环境部署到业务机的离线生产环境通常是比较困难的。python版本，软件包的版本和各种依赖环境都要较为严格的保持一致"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
@@ -172,13 +172,25 @@ Kang
 <ol>
 <li>
 <p>开发机使用conda创建好对应的虚拟环境，并安装必要的包。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># 创建并激活环境</span>
-conda create -n OCEAN python<span style=color:#f92672>=</span>3.6
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 创建并激活环境</span>
+conda create -n OCEAN <span class=nv>python</span><span class=o>=</span>3.6
 conda activate OCEAN
-<span style=color:#75715e># 安装必要的包</span>
+<span class=c1># 安装必要的包</span>
 pip install xxx
 conda install xxx
-</code></pre></div></li>
+</code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>开发机器的环境打包</p>
 <p>首先<code>conda info -e</code>找到对应包的位置。如图，我的环境在<code>/home/wukang/.conda/envs/OCEAN</code> 目录下。</p>
@@ -194,16 +206,31 @@ conda install xxx
 </li>
 <li>
 <p>创建和开发机器<strong>同名</strong>的虚拟环境，一定要同名，否则后续会出问题。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># 从base环境克隆出和开发环境同名的OCEAN环境</span>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 从base环境克隆出和开发环境同名的OCEAN环境</span>
 conda create -n OCEAN --clone base
-</code></pre></div></li>
+</code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>解压环境。<code>tar xvf OCEAN_ENVS.tar /home/xxx/miniconda/envs/ </code></p>
 </li>
 <li>
 <p>激活环境。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>source activate OCEAN
-</code></pre></div></li>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>source</span> activate OCEAN
+</code></pre></td></tr></table>
+</div>
+</div></li>
 </ol>
 <p>至此，业务机的环境克隆就已经完成。</p>
 </div>
