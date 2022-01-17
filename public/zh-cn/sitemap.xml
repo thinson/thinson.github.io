@@ -79,6 +79,27 @@
   </url>
   
   <url>
+    <loc>https://thinson.github.io/post/co-teaching/</loc>
+    <lastmod>2022-01-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://thinson.github.io/categories/%E5%AD%A6%E6%9C%AF/</loc>
+    <lastmod>2022-01-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://thinson.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2022-01-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://thinson.github.io/categories/python/</loc>
     <lastmod>2022-01-01T17:21:00+08:00</lastmod>
     <changefreq>weekly</changefreq>

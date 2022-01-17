@@ -26,6 +26,15 @@
     </item>
     
     <item>
+      <title>[论文阅读]Co-teaching</title>
+      <link>https://thinson.github.io/post/co-teaching/</link>
+      <pubDate>Mon, 17 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://thinson.github.io/post/co-teaching/</guid>
+      <description>作者 第一完成单位为悉尼科技大学 论文：https://arxiv.org/pdf/1804.06872.pdf 代码： https://github.com/bhanML/Co-teaching 背景 co-teachin</description>
+    </item>
+    
+    <item>
       <title>利用anaconda离线部署python环境</title>
       <link>https://thinson.github.io/post/%E5%88%A9%E7%94%A8anaconda%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2python%E7%8E%AF%E5%A2%83/</link>
       <pubDate>Sat, 01 Jan 2022 17:21:00 +0800</pubDate>
