@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux使用 on Kang&#39;s Blog💻</title>
+    <link>https://thinson.github.io/tags/linux%E4%BD%BF%E7%94%A8/</link>
+    <description>Recent content in Linux使用 on Kang&#39;s Blog💻</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 17 Jan 2022 17:21:00 +0800</lastBuildDate><atom:link href="https://thinson.github.io/tags/linux%E4%BD%BF%E7%94%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux awk是什么</title>
+      <link>https://thinson.github.io/post/awk%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 17 Jan 2022 17:21:00 +0800</pubDate>
+      
+      <guid>https://thinson.github.io/post/awk%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>awk是什么？ awk其实不仅仅是工具软件，还是一种编程语言。 用来处理linux系统下的文档 基本使用 awk 条件 动作 文件名 # 可以没有条件 awk -F &amp;#39;:&amp;#39; &amp;#39;{print NR &amp;#34;)</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -3,13 +3,13 @@
 # And see https://gohugo.io/getting-started/configuration/ .
 
 baseURL = "https://thinson.github.io/"
-title = "Kang's Blog"
+title = "Kang's Blog💻"
 enableRobotsTXT = true
 enableEmoji = true
 theme = "jane"
 
 hasCJKLanguage = true     # has chinese/japanese/korean ? # 自动检测是否包含 中文\日文\韩文
-paginate = 3              # Number of articles displayed on the homepage  # 首页每页显示的文章数
+paginate = 5              # Number of articles displayed on the homepage  # 首页每页显示的文章数
 rssLimit = 20             # Limit Entry Count to Rss file # 限制 Rss 文章输出数量
 disqusShortname = ""      # disqus_shortname
 googleAnalytics = ""      # UA-XXXXXXXX-X
@@ -31,29 +31,29 @@ defaultContentLanguage = "zh-cn"           # Default language to use
   filename = "sitemap.xml"
 
 [[menu.main]]             # config your menu              # 配置目录
-  name = "This is Home"
+  name = "主页"
   weight = 10
   identifier = "home"
   url = "/"
 [[menu.main]]
-  name = "Archives"
+  name = "归档"
   weight = 20
   identifier = "archives"
   url = "/post/"
 [[menu.main]]
-  name = "Tags"
+  name = "标签"
   weight = 30
   identifier = "tags"
   url = "/tags/"
 [[menu.main]]
-  name = "Categories"
+  name = "分类"
   weight = 40
   identifier = "categories"
   url = "/categories/"
-[[menu.main]]
-  name = "external-link"
-  weight = 50
-  url = "https://gohugo.io"
+# [[menu.main]]
+#   name = "external-link"
+#   weight = 50
+#   url = "https://gohugo.io"
 
 
 [params]
@@ -62,8 +62,8 @@ defaultContentLanguage = "zh-cn"           # Default language to use
   rssFullContent = true     # if false, Rss feed instead of the summary
 
   # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
-  logoTitle = "Kang's Blog"        # default: the title value    # 默认值: 上面设置的title值
-  keywords = ["Tech", "Life"]
+  logoTitle = "Kang"        # default: the title value    # 默认值: 上面设置的title值
+  keywords = ["生活", "学术", "技术"]
   description = "This is the blog for Kang."
 
   # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
@@ -81,7 +81,7 @@ defaultContentLanguage = "zh-cn"           # Default language to use
   customJS = []             # if ['custom.js'], load '/static/js/custom.js' file
 
   [params.social]                                         # 社交链接
-    a-email = "mailto:your@email.com"
+    a-email = "mailto:kang_wu@foxmail.com"
     # b-stack-overflow = "http://localhost:1313"
     #c-twitter = "http://localhost:1313"
     #d-facebook = "http://localhost:1313"
