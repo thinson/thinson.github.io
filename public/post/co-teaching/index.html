@@ -69,7 +69,7 @@
 <meta itemprop="name" content="[论文阅读]Co-teaching">
 <meta itemprop="description" content="作者 第一完成单位为悉尼科技大学 论文：https://arxiv.org/pdf/1804.06872.pdf 代码： https://github.com/bhanML/Co-teaching 背景 co-teachin"><meta itemprop="datePublished" content="2022-01-17T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-01-17T00:00:00+00:00" />
-<meta itemprop="wordCount" content="601">
+<meta itemprop="wordCount" content="628">
 <meta itemprop="keywords" content="机器学习," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[论文阅读]Co-teaching"/>
 <meta name="twitter:description" content="作者 第一完成单位为悉尼科技大学 论文：https://arxiv.org/pdf/1804.06872.pdf 代码： https://github.com/bhanML/Co-teaching 背景 co-teachin"/>
@@ -352,36 +352,81 @@ Co-teaching的思想相当于把当前网络认为clean的样本交给另外的�
 <h2 id="代码">代码</h2>
 <p>核心代码为梯度互相更新的部分, 相当于先对每个网络各求了loss，再对loss进行排序，选取最低的一定比例交给另一个网络进行反向传播。</p>
 <p>loss部分代码如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Loss functions</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">loss_coteaching</span>(y_1, y_2, t, forget_rate, ind, noise_or_not):
-    loss_1 <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>cross_entropy(y_1, t, reduce <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>)
-    ind_1_sorted <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argsort(loss_1<span style="color:#f92672">.</span>data)<span style="color:#f92672">.</span>cuda()
-    loss_1_sorted <span style="color:#f92672">=</span> loss_1[ind_1_sorted]
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Loss functions</span>
+<span class="k">def</span> <span class="nf">loss_coteaching</span><span class="p">(</span><span class="n">y_1</span><span class="p">,</span> <span class="n">y_2</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">forget_rate</span><span class="p">,</span> <span class="n">ind</span><span class="p">,</span> <span class="n">noise_or_not</span><span class="p">):</span>
+    <span class="n">loss_1</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">y_1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">reduce</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">ind_1_sorted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">loss_1</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+    <span class="n">loss_1_sorted</span> <span class="o">=</span> <span class="n">loss_1</span><span class="p">[</span><span class="n">ind_1_sorted</span><span class="p">]</span>
 
-    loss_2 <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>cross_entropy(y_2, t, reduce <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>)
-    ind_2_sorted <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argsort(loss_2<span style="color:#f92672">.</span>data)<span style="color:#f92672">.</span>cuda()
-    loss_2_sorted <span style="color:#f92672">=</span> loss_2[ind_2_sorted]
+    <span class="n">loss_2</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">y_2</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">reduce</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">ind_2_sorted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">loss_2</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+    <span class="n">loss_2_sorted</span> <span class="o">=</span> <span class="n">loss_2</span><span class="p">[</span><span class="n">ind_2_sorted</span><span class="p">]</span>
 
-    remember_rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> forget_rate
-    num_remember <span style="color:#f92672">=</span> int(remember_rate <span style="color:#f92672">*</span> len(loss_1_sorted))
+    <span class="n">remember_rate</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">forget_rate</span>
+    <span class="n">num_remember</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">remember_rate</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">loss_1_sorted</span><span class="p">))</span>
 
-    pure_ratio_1 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sum(noise_or_not[ind[ind_1_sorted[:num_remember]]])<span style="color:#f92672">/</span>float(num_remember)
-    pure_ratio_2 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sum(noise_or_not[ind[ind_2_sorted[:num_remember]]])<span style="color:#f92672">/</span>float(num_remember)
+    <span class="n">pure_ratio_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">noise_or_not</span><span class="p">[</span><span class="n">ind</span><span class="p">[</span><span class="n">ind_1_sorted</span><span class="p">[:</span><span class="n">num_remember</span><span class="p">]]])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">num_remember</span><span class="p">)</span>
+    <span class="n">pure_ratio_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">noise_or_not</span><span class="p">[</span><span class="n">ind</span><span class="p">[</span><span class="n">ind_2_sorted</span><span class="p">[:</span><span class="n">num_remember</span><span class="p">]]])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">num_remember</span><span class="p">)</span>
 
-    ind_1_update<span style="color:#f92672">=</span>ind_1_sorted[:num_remember]
-    ind_2_update<span style="color:#f92672">=</span>ind_2_sorted[:num_remember]
-    <span style="color:#75715e"># exchange</span>
-    loss_1_update <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>cross_entropy(y_1[ind_2_update], t[ind_2_update])
-    loss_2_update <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>cross_entropy(y_2[ind_1_update], t[ind_1_update])
+    <span class="n">ind_1_update</span><span class="o">=</span><span class="n">ind_1_sorted</span><span class="p">[:</span><span class="n">num_remember</span><span class="p">]</span>
+    <span class="n">ind_2_update</span><span class="o">=</span><span class="n">ind_2_sorted</span><span class="p">[:</span><span class="n">num_remember</span><span class="p">]</span>
+    <span class="c1"># exchange</span>
+    <span class="n">loss_1_update</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">y_1</span><span class="p">[</span><span class="n">ind_2_update</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">ind_2_update</span><span class="p">])</span>
+    <span class="n">loss_2_update</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">y_2</span><span class="p">[</span><span class="n">ind_1_update</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">ind_1_update</span><span class="p">])</span>
 
-    <span style="color:#66d9ef">return</span> torch<span style="color:#f92672">.</span>sum(loss_1_update)<span style="color:#f92672">/</span>num_remember, torch<span style="color:#f92672">.</span>sum(loss_2_update)<span style="color:#f92672">/</span>num_remember, pure_ratio_1, pure_ratio_2
-</code></pre></div><p>forget rate更新代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># define drop rate schedule</span>
-rate_schedule <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(args<span style="color:#f92672">.</span>n_epoch)<span style="color:#f92672">*</span>forget_rate
-rate_schedule[:args<span style="color:#f92672">.</span>num_gradual] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>, forget_rate<span style="color:#f92672">**</span>args<span style="color:#f92672">.</span>exponent, args<span style="color:#f92672">.</span>num_gradual)
-</code></pre></div><p>调用：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">loss_1, loss_2, pure_ratio_1, pure_ratio_2 <span style="color:#f92672">=</span> loss_coteaching(logits1, logits2, labels, rate_schedule[epoch], ind, noise_or_not)
-</code></pre></div>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">loss_1_update</span><span class="p">)</span><span class="o">/</span><span class="n">num_remember</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">loss_2_update</span><span class="p">)</span><span class="o">/</span><span class="n">num_remember</span><span class="p">,</span> <span class="n">pure_ratio_1</span><span class="p">,</span> <span class="n">pure_ratio_2</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>forget rate更新代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># define drop rate schedule</span>
+<span class="n">rate_schedule</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">n_epoch</span><span class="p">)</span><span class="o">*</span><span class="n">forget_rate</span>
+<span class="n">rate_schedule</span><span class="p">[:</span><span class="n">args</span><span class="o">.</span><span class="n">num_gradual</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">forget_rate</span><span class="o">**</span><span class="n">args</span><span class="o">.</span><span class="n">exponent</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">num_gradual</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>调用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">loss_1</span><span class="p">,</span> <span class="n">loss_2</span><span class="p">,</span> <span class="n">pure_ratio_1</span><span class="p">,</span> <span class="n">pure_ratio_2</span> <span class="o">=</span> <span class="n">loss_coteaching</span><span class="p">(</span><span class="n">logits1</span><span class="p">,</span> <span class="n">logits2</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">rate_schedule</span><span class="p">[</span><span class="n">epoch</span><span class="p">],</span> <span class="n">ind</span><span class="p">,</span> <span class="n">noise_or_not</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     

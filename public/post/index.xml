@@ -22,7 +22,7 @@
       <pubDate>Mon, 17 Jan 2022 17:21:00 +0800</pubDate>
       
       <guid>https://thinson.github.io/post/awk%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
-      <description>awk是什么？ awk其实不仅仅是工具软件，还是一种编程语言。 用来处理linux系统下的文档 基本使用 awk 条件 动作 文件名 # 可以没有条件 awk -F &amp;#39;:&amp;#39; &amp;#39;{print NR &amp;#34;)</description>
+      <description>awk是什么？ awk其实不仅仅是工具软件，还是一种编程语言。 用来处理linux系统下的文档 基本使用 1 2 awk 条件 动作 文件名 # 可以没有条件 1 2 3 4</description>
     </item>
     
     <item>
