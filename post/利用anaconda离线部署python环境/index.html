@@ -2,7 +2,7 @@
 <head>
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
-<title>归档 - Kang's Blog💻</title>
+<title>利用anaconda离线部署python环境 - Kang's Blog💻</title>
 <meta name=renderer content="webkit">
 <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=yes">
 <meta name=MobileOptimized content="width">
@@ -14,21 +14,25 @@
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=mobile-web-app-capable content="yes">
 <meta name=author content="kang">
-<meta name=description content="This is the blog for Kang.">
+<meta name=description content="将开发机的python开发环境部署到业务机的离线生产环境通常是比较困难的。python版本，软件包的版本和各种依赖环境都要较为严格的保持一致">
 <meta name=keywords content="生活,学术,技术">
 <meta name=generator content="Hugo 0.92.0">
-<link rel=canonical href=https://thinson.github.io/post/>
-<link href=/post/index.xml rel=alternate type=application/rss+xml title="Kang's Blog💻">
+<link rel=canonical href=https://thinson.github.io/post/%E5%88%A9%E7%94%A8anaconda%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2python%E7%8E%AF%E5%A2%83/>
 <link rel=icon href=/favicon.ico>
 <link rel=stylesheet href=/sass/jane.min.fa4b2b9f31b5c6d0b683db81157a9226e17b06e61911791ab547242a4a0556f2.css integrity="sha256-+ksrnzG1xtC2g9uBFXqSJuF7BuYZEXkatUckKkoFVvI=" media=screen crossorigin=anonymous>
-<meta property="og:title" content="Posts">
-<meta property="og:description" content="This is the blog for Kang.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://thinson.github.io/post/">
-<meta itemprop=name content="Posts">
-<meta itemprop=description content="This is the blog for Kang."><meta name=twitter:card content="summary">
-<meta name=twitter:title content="Posts">
-<meta name=twitter:description content="This is the blog for Kang."><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<meta property="og:title" content="利用anaconda离线部署python环境">
+<meta property="og:description" content="将开发机的python开发环境部署到业务机的离线生产环境通常是比较困难的。python版本，软件包的版本和各种依赖环境都要较为严格的保持一致">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://thinson.github.io/post/%E5%88%A9%E7%94%A8anaconda%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2python%E7%8E%AF%E5%A2%83/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2022-01-01T17:21:00+08:00">
+<meta property="article:modified_time" content="2022-01-01T17:21:00+08:00">
+<meta itemprop=name content="利用anaconda离线部署python环境">
+<meta itemprop=description content="将开发机的python开发环境部署到业务机的离线生产环境通常是比较困难的。python版本，软件包的版本和各种依赖环境都要较为严格的保持一致"><meta itemprop=datePublished content="2022-01-01T17:21:00+08:00">
+<meta itemprop=dateModified content="2022-01-01T17:21:00+08:00">
+<meta itemprop=wordCount content="552">
+<meta itemprop=keywords content="python,环境,"><meta name=twitter:card content="summary">
+<meta name=twitter:title content="利用anaconda离线部署python环境">
+<meta name=twitter:description content="将开发机的python开发环境部署到业务机的离线生产环境通常是比较困难的。python版本，软件包的版本和各种依赖环境都要较为严格的保持一致"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
 <body>
@@ -125,66 +129,121 @@ Kang
 <main id=main class="main bg-llight">
 <div class=content-wrapper>
 <div id=content class="content container">
-<section id=archive class=archive>
-<div class=archive-title>
-<span class=archive-post-counter>
-共计 5 篇文章
-</span>
-</div>
-<div class=collection-title>
-<h2 class=archive-year>2022</h2>
-</div>
-<div class=archive-post>
-<time datetime=2022-01-17 class=archive-post-time>
-2022-01-17
-</time>
-<span class=archive-post-title>
-<a href=/post/awk%E7%9A%84%E4%BD%BF%E7%94%A8/ class=archive-post-link>
-Linux awk是什么
-</a>
-</span>
-</div>
-<div class=archive-post>
-<time datetime=2022-01-17 class=archive-post-time>
-2022-01-17
-</time>
-<span class=archive-post-title>
-<a href=/post/hello-world/ class=archive-post-link>
-Hello World!
-</a>
-</span>
-</div>
-<div class=archive-post>
-<time datetime=2022-01-01 class=archive-post-time>
+<article class="post bg-white">
+<header class=post-header>
+<h1 class=post-title>利用anaconda离线部署python环境</h1>
+<div class=post-meta>
+<time datetime=2022-01-01 class=post-time>
 2022-01-01
 </time>
-<span class=archive-post-title>
-<a href=/post/%E5%88%A9%E7%94%A8anaconda%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2python%E7%8E%AF%E5%A2%83/ class=archive-post-link>
-利用anaconda离线部署python环境
-</a>
-</span>
+<div class=post-category>
+<a href=https://thinson.github.io/categories/python/> Python </a>
 </div>
-<div class=collection-title>
-<h2 class=archive-year>0001</h2>
 </div>
-<div class=archive-post>
-<time datetime=0001-01-01 class=archive-post-time>
-0001-01-01
-</time>
-<span class=archive-post-title>
-<a href=/post/test/ class=archive-post-link>
-</a>
-</span>
+</header>
+<div class=post-toc id=post-toc>
+<h2 class=post-toc-title>文章目录</h2>
+<div class=post-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#思路>思路</a></li>
+</ul>
+</li>
+<li><a href=#流程>流程</a>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</nav>
 </div>
-<div class=archive-post>
-<time datetime=0001-01-01 class=archive-post-time>
-0001-01-01
-</time>
-<span class=archive-post-title>
-<a href=/post/hello-world/ class=archive-post-link>
-</a>
+</div>
+<div class=post-content>
+<blockquote>
+<p>将开发机的<strong>python开发环境</strong>部署到业务机的<strong>离线生产环境</strong>通常是比较困难的。python版本，软件包的版本和各种依赖环境都要较为严格的保持一致。如果不是十分小心，很容易就会陷入各种链接错误等。如何比较简便的进行python环境的离线迁移呢？本文基于anaconda的包管理功能，提供一种较为简便的环境迁移方法。</p>
+</blockquote>
+<h3 id=思路>思路</h3>
+<p>思路很简单，就是将 开发环境的虚拟环境文件夹 移动到 生产环境的虚拟环境文件夹。</p>
+<p>需要保证： python的基础版本一致，如3.6对应3.6，后面小版本无所谓。</p>
+<h2 id=流程>流程</h2>
+<h4 id=开发机>开发机</h4>
+<ol>
+<li>
+<p>开发机使用conda创建好对应的虚拟环境，并安装必要的包。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># 创建并激活环境</span>
+conda create -n OCEAN python<span style=color:#f92672>=</span>3.6
+conda activate OCEAN
+<span style=color:#75715e># 安装必要的包</span>
+pip install xxx
+conda install xxx
+</code></pre></div></li>
+<li>
+<p>开发机器的环境打包</p>
+<p>首先<code>conda info -e</code>找到对应包的位置。如图，我的环境在<code>/home/wukang/.conda/envs/OCEAN</code> 目录下。</p>
+<p><img src=https://gitee.com/kang_wu/pic-bed/raw/master/img/image-20211227175202788.png alt=image-20211227175202788></p>
+<p>打包对应的环境，<code>tar cvf OCEAN_ENVS.tar /home/wukang/.conda/envs/OCEAN </code>，将对应的环境拷贝至U盘。</p>
+</li>
+</ol>
+<p>至此，物理机的操作已经完成，把需要的代码和上述生成的环境压缩包拷贝至U盘即可。</p>
+<h4 id=业务机>业务机</h4>
+<ol>
+<li>
+<p>安装anaconda/miniconda。</p>
+</li>
+<li>
+<p>创建和开发机器<strong>同名</strong>的虚拟环境，一定要同名，否则后续会出问题。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># 从base环境克隆出和开发环境同名的OCEAN环境</span>
+conda create -n OCEAN --clone base
+</code></pre></div></li>
+<li>
+<p>解压环境。<code>tar xvf OCEAN_ENVS.tar /home/xxx/miniconda/envs/ </code></p>
+</li>
+<li>
+<p>激活环境。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>source activate OCEAN
+</code></pre></div></li>
+</ol>
+<p>至此，业务机的环境克隆就已经完成。</p>
+</div>
+<div class=post-copyright>
+<p class=copyright-item>
+<span class=item-title>文章作者</span>
+<span class=item-content>kang</span>
+</p>
+<p class=copyright-item>
+<span class=item-title>上次更新</span>
+<span class=item-content>
+2022-01-01
 </span>
-</div></section>
+</p>
+<p class=copyright-item>
+<span class=item-title>许可协议</span>
+<span class=item-content><a rel="license noopener" href=https://creativecommons.org/licenses/by-nc-nd/4.0/ target=_blank>CC BY-NC-ND 4.0</a></span>
+</p>
+</div>
+<footer class=post-footer>
+<div class=post-tags>
+<a href=https://thinson.github.io/tags/python/>python</a>
+<a href=https://thinson.github.io/tags/%E7%8E%AF%E5%A2%83/>环境</a>
+</div>
+<nav class=post-nav>
+<a class=prev href=/post/awk%E7%9A%84%E4%BD%BF%E7%94%A8/>
+<i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417l277.93508-310.326815c11.338233-12.190647 11.035334-32.285311-.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"/></svg>
+</i>
+<span class="prev-text nav-default">Linux awk是什么</span>
+<span class="prev-text nav-mobile">上一篇</span>
+</a>
+<a class=next href=/post/hello-world/>
+<span class="next-text nav-default"></span>
+<span class="prev-text nav-mobile">下一篇</span>
+<i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697c-11.777231-11.500939-30.216186-10.304694-41.178865 2.712784z"/></svg>
+</i>
+</a>
+</nav>
+</footer>
+</article>
 </div>
 </div>
 </main>
