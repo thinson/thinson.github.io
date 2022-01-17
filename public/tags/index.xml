@@ -109,7 +109,7 @@
     <item>
       <title>development</title>
       <link>http://localhost:1313/tags/development/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/tags/development/</guid>
       <description></description>
@@ -118,7 +118,7 @@
     <item>
       <title>go</title>
       <link>http://localhost:1313/tags/go/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/tags/go/</guid>
       <description></description>
@@ -127,27 +127,9 @@
     <item>
       <title>golang</title>
       <link>http://localhost:1313/tags/golang/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>templates</title>
-      <link>http://localhost:1313/tags/templates/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/tags/templates/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>themes</title>
-      <link>http://localhost:1313/tags/themes/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/tags/themes/</guid>
       <description></description>
     </item>
     
@@ -157,6 +139,24 @@
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>templates</title>
+      <link>http://localhost:1313/tags/templates/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/templates/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>themes</title>
+      <link>http://localhost:1313/tags/themes/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/themes/</guid>
       <description></description>
     </item>
     
