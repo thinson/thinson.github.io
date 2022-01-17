@@ -2,7 +2,7 @@
 <head>
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
-<title>Linux awk是什么 - Kang's Blog💻</title>
+<title>[论文阅读]Co-teaching - Kang's Blog💻</title>
 <meta name=renderer content="webkit">
 <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=yes">
 <meta name=MobileOptimized content="width">
@@ -14,25 +14,25 @@
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=mobile-web-app-capable content="yes">
 <meta name=author content="kang">
-<meta name=description content="awk是什么？ awk其实不仅仅是工具软件，还是一种编程语言。 用来处理linux系统下的文档 基本使用 awk 条件 动作 文件名 # 可以没有条件 awk -F &amp;#39;:&amp;#39; &amp;#39;{print NR &amp;#34;)">
+<meta name=description content="作者 第一完成单位为悉尼科技大学 论文：https://arxiv.org/pdf/1804.06872.pdf 代码： https://github.com/bhanML/Co-teaching 背景 co-teachin">
 <meta name=keywords content="生活,学术,技术">
 <meta name=generator content="Hugo 0.92.0">
-<link rel=canonical href=https://thinson.github.io/post/awk%E7%9A%84%E4%BD%BF%E7%94%A8/>
+<link rel=canonical href=https://thinson.github.io/post/co-teaching/>
 <link rel=icon href=/favicon.ico>
 <link rel=stylesheet href=/sass/jane.min.fa4b2b9f31b5c6d0b683db81157a9226e17b06e61911791ab547242a4a0556f2.css integrity="sha256-+ksrnzG1xtC2g9uBFXqSJuF7BuYZEXkatUckKkoFVvI=" media=screen crossorigin=anonymous>
-<meta property="og:title" content="Linux awk是什么">
-<meta property="og:description" content="awk是什么？ awk其实不仅仅是工具软件，还是一种编程语言。 用来处理linux系统下的文档 基本使用 awk 条件 动作 文件名 # 可以没有条件 awk -F ':' '{print NR &#34;)">
+<meta property="og:title" content="[论文阅读]Co-teaching">
+<meta property="og:description" content="作者 第一完成单位为悉尼科技大学 论文：https://arxiv.org/pdf/1804.06872.pdf 代码： https://github.com/bhanML/Co-teaching 背景 co-teachin">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://thinson.github.io/post/awk%E7%9A%84%E4%BD%BF%E7%94%A8/"><meta property="article:section" content="post">
-<meta property="article:published_time" content="2022-01-17T17:21:00+08:00">
-<meta property="article:modified_time" content="2022-01-17T17:21:00+08:00">
-<meta itemprop=name content="Linux awk是什么">
-<meta itemprop=description content="awk是什么？ awk其实不仅仅是工具软件，还是一种编程语言。 用来处理linux系统下的文档 基本使用 awk 条件 动作 文件名 # 可以没有条件 awk -F ':' '{print NR &#34;)"><meta itemprop=datePublished content="2022-01-17T17:21:00+08:00">
-<meta itemprop=dateModified content="2022-01-17T17:21:00+08:00">
-<meta itemprop=wordCount content="138">
-<meta itemprop=keywords content="Linux使用,"><meta name=twitter:card content="summary">
-<meta name=twitter:title content="Linux awk是什么">
-<meta name=twitter:description content="awk是什么？ awk其实不仅仅是工具软件，还是一种编程语言。 用来处理linux系统下的文档 基本使用 awk 条件 动作 文件名 # 可以没有条件 awk -F ':' '{print NR &#34;)"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<meta property="og:url" content="https://thinson.github.io/post/co-teaching/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2022-01-17T00:00:00+00:00">
+<meta property="article:modified_time" content="2022-01-17T00:00:00+00:00">
+<meta itemprop=name content="[论文阅读]Co-teaching">
+<meta itemprop=description content="作者 第一完成单位为悉尼科技大学 论文：https://arxiv.org/pdf/1804.06872.pdf 代码： https://github.com/bhanML/Co-teaching 背景 co-teachin"><meta itemprop=datePublished content="2022-01-17T00:00:00+00:00">
+<meta itemprop=dateModified content="2022-01-17T00:00:00+00:00">
+<meta itemprop=wordCount content="601">
+<meta itemprop=keywords content="机器学习,"><meta name=twitter:card content="summary">
+<meta name=twitter:title content="[论文阅读]Co-teaching">
+<meta name=twitter:description content="作者 第一完成单位为悉尼科技大学 论文：https://arxiv.org/pdf/1804.06872.pdf 代码： https://github.com/bhanML/Co-teaching 背景 co-teachin"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
 <body>
@@ -131,13 +131,13 @@ Kang
 <div id=content class="content container">
 <article class="post bg-white">
 <header class=post-header>
-<h1 class=post-title>Linux awk是什么</h1>
+<h1 class=post-title>[论文阅读]Co-teaching</h1>
 <div class=post-meta>
 <time datetime=2022-01-17 class=post-time>
 2022-01-17
 </time>
 <div class=post-category>
-<a href=https://thinson.github.io/categories/linux/> Linux </a>
+<a href=https://thinson.github.io/categories/%E5%AD%A6%E6%9C%AF/> 学术 </a>
 </div>
 </div>
 </header>
@@ -146,28 +146,66 @@ Kang
 <div class=post-toc-content>
 <nav id=TableOfContents>
 <ul>
-<li>
-<ul>
-<li><a href=#awk是什么>awk是什么？</a></li>
-<li><a href=#基本使用>基本使用</a></li>
-</ul>
-</li>
+<li><a href=#作者>作者</a></li>
+<li><a href=#背景>背景</a></li>
+<li><a href=#基础观点>基础观点</a></li>
+<li><a href=#方法>方法</a></li>
+<li><a href=#代码>代码</a></li>
 </ul>
 </nav>
 </div>
 </div>
 <div class=post-content>
-<h3 id=awk是什么>awk是什么？</h3>
-<p><code>awk</code>其实不仅仅是工具软件，还是一种编程语言。</p>
-<p>用来处理linux系统下的文档</p>
-<h3 id=基本使用>基本使用</h3>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>awk 条件 动作 文件名
-<span style=color:#75715e># 可以没有条件</span>
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>awk -F <span style=color:#e6db74>&#39;:&#39;</span> <span style=color:#e6db74>&#39;{print NR &#34;) &#34; $1}&#39;</span> demo.txt
-<span style=color:#75715e># 语句用&#39;&#39;隔开，&#39;&#39;内部字符用引号</span>
-<span style=color:#75715e># NR表示当前行数</span>
-<span style=color:#75715e># -F 表示分隔符是什么</span>
- awk -F <span style=color:#e6db74>&#39;:&#39;</span> <span style=color:#e6db74>&#39;{if($1&lt;&#34;m&#34;)  print NR &#34;&gt;&#34; $1; else print &#34;____&#34;}&#39;</span> user.txt
+<h2 id=作者>作者</h2>
+<p>第一完成单位为悉尼科技大学
+论文：https://arxiv.org/pdf/1804.06872.pdf
+代码： <a href=https://github.com/bhanML/Co-teaching>https://github.com/bhanML/Co-teaching</a></p>
+<h2 id=背景>背景</h2>
+<p>co-teaching是nips2018上的文章。主要解决的是noisy label的问题。</p>
+<h2 id=基础观点>基础观点</h2>
+<ol>
+<li>DNN在训练的时候，一开始是从clean label中获取信息，训练后期倾向于拟合噪声。</li>
+<li>训练前期，loss低的倾向于是clean的label。</li>
+</ol>
+<h2 id=方法>方法</h2>
+<p><img src=https://gitee.com/kang_wu/pic-bed/raw/master/img/11910280-fbb2d3a2c3925326.png alt=最右为co-teaching>
+M-Net 利用DNN本身进行噪声修正，或造成噪声积累。
+Co-teaching的思想相当于把当前网络认为clean的样本交给另外的网络训练，避免了噪声累积。网络1把自己认为干净的<strong>一部分</strong>样本交给网络2，网络2把自己认为干净<strong>一部分</strong>的样本交给网络1.
+随着训练的进行（epoch变大），互相认为干净的这部分比例逐步减少 ，也就是一开始给网络的数据很多（不管是含有噪声还是没有噪声都扔给网络训练），最后给网络的训练数据逐步减少，<strong>避免了网络对于噪声数据的拟合</strong>，对应基础观点1.</p>
+<p>算法具体流程如下：</p>
+<p><img src=https://upload-images.jianshu.io/upload_images/11910280-22c160a73ba8fb0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240 alt=算法流程.png></p>
+<h2 id=代码>代码</h2>
+<p>核心代码为梯度互相更新的部分, 相当于先对每个网络各求了loss，再对loss进行排序，选取最低的一定比例交给另一个网络进行反向传播。</p>
+<p>loss部分代码如下：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Loss functions</span>
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>loss_coteaching</span>(y_1, y_2, t, forget_rate, ind, noise_or_not):
+    loss_1 <span style=color:#f92672>=</span> F<span style=color:#f92672>.</span>cross_entropy(y_1, t, reduce <span style=color:#f92672>=</span> <span style=color:#66d9ef>False</span>)
+    ind_1_sorted <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>argsort(loss_1<span style=color:#f92672>.</span>data)<span style=color:#f92672>.</span>cuda()
+    loss_1_sorted <span style=color:#f92672>=</span> loss_1[ind_1_sorted]
+
+    loss_2 <span style=color:#f92672>=</span> F<span style=color:#f92672>.</span>cross_entropy(y_2, t, reduce <span style=color:#f92672>=</span> <span style=color:#66d9ef>False</span>)
+    ind_2_sorted <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>argsort(loss_2<span style=color:#f92672>.</span>data)<span style=color:#f92672>.</span>cuda()
+    loss_2_sorted <span style=color:#f92672>=</span> loss_2[ind_2_sorted]
+
+    remember_rate <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>-</span> forget_rate
+    num_remember <span style=color:#f92672>=</span> int(remember_rate <span style=color:#f92672>*</span> len(loss_1_sorted))
+
+    pure_ratio_1 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>sum(noise_or_not[ind[ind_1_sorted[:num_remember]]])<span style=color:#f92672>/</span>float(num_remember)
+    pure_ratio_2 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>sum(noise_or_not[ind[ind_2_sorted[:num_remember]]])<span style=color:#f92672>/</span>float(num_remember)
+
+    ind_1_update<span style=color:#f92672>=</span>ind_1_sorted[:num_remember]
+    ind_2_update<span style=color:#f92672>=</span>ind_2_sorted[:num_remember]
+    <span style=color:#75715e># exchange</span>
+    loss_1_update <span style=color:#f92672>=</span> F<span style=color:#f92672>.</span>cross_entropy(y_1[ind_2_update], t[ind_2_update])
+    loss_2_update <span style=color:#f92672>=</span> F<span style=color:#f92672>.</span>cross_entropy(y_2[ind_1_update], t[ind_1_update])
+
+    <span style=color:#66d9ef>return</span> torch<span style=color:#f92672>.</span>sum(loss_1_update)<span style=color:#f92672>/</span>num_remember, torch<span style=color:#f92672>.</span>sum(loss_2_update)<span style=color:#f92672>/</span>num_remember, pure_ratio_1, pure_ratio_2
+</code></pre></div><p>forget rate更新代码：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># define drop rate schedule</span>
+rate_schedule <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>ones(args<span style=color:#f92672>.</span>n_epoch)<span style=color:#f92672>*</span>forget_rate
+rate_schedule[:args<span style=color:#f92672>.</span>num_gradual] <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>linspace(<span style=color:#ae81ff>0</span>, forget_rate<span style=color:#f92672>**</span>args<span style=color:#f92672>.</span>exponent, args<span style=color:#f92672>.</span>num_gradual)
+</code></pre></div><p>调用：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>loss_1, loss_2, pure_ratio_1, pure_ratio_2 <span style=color:#f92672>=</span> loss_coteaching(logits1, logits2, labels, rate_schedule[epoch], ind, noise_or_not)
 </code></pre></div>
 </div>
 <div class=post-copyright>
@@ -188,17 +226,17 @@ Kang
 </div>
 <footer class=post-footer>
 <div class=post-tags>
-<a href=https://thinson.github.io/tags/linux%E4%BD%BF%E7%94%A8/>Linux使用</a>
+<a href=https://thinson.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/>机器学习</a>
 </div>
 <nav class=post-nav>
-<a class=prev href=/post/hello-world/>
+<a class=prev href=/post/awk%E7%9A%84%E4%BD%BF%E7%94%A8/>
 <i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417l277.93508-310.326815c11.338233-12.190647 11.035334-32.285311-.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"/></svg>
 </i>
-<span class="prev-text nav-default">Hello World!</span>
+<span class="prev-text nav-default">Linux awk是什么</span>
 <span class="prev-text nav-mobile">上一篇</span>
 </a>
-<a class=next href=/post/co-teaching/>
-<span class="next-text nav-default">[论文阅读]Co-teaching</span>
+<a class=next href=/post/%E5%88%A9%E7%94%A8anaconda%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2python%E7%8E%AF%E5%A2%83/>
+<span class="next-text nav-default">利用anaconda离线部署python环境</span>
 <span class="prev-text nav-mobile">下一篇</span>
 <i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697c-11.777231-11.500939-30.216186-10.304694-41.178865 2.712784z"/></svg>
 </i>
