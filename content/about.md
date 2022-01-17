@@ -12,6 +12,8 @@ mathjax: false
 
 Hugo is a static site engine written in Go.
 
+xxxx
+
 
 It makes use of a variety of open source projects including:
 
