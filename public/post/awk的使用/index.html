@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.100.2" />
 
 
 <link rel="canonical" href="https://thinson.github.io/post/awk%E7%9A%84%E4%BD%BF%E7%94%A8/" />
@@ -342,9 +342,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">awk 条件 动作 文件名
-<span class="c1"># 可以没有条件</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">awk 条件 动作 文件名
+</span></span><span class="line"><span class="cl"><span class="c1"># 可以没有条件</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -355,12 +355,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">awk -F <span class="s1">&#39;:&#39;</span> <span class="s1">&#39;{print NR &#34;) &#34; $1}&#39;</span> demo.txt
-<span class="c1"># 语句用&#39;&#39;隔开，&#39;&#39;内部字符用引号</span>
-<span class="c1"># NR表示当前行数</span>
-<span class="c1"># -F 表示分隔符是什么</span>
- awk -F <span class="s1">&#39;:&#39;</span> <span class="s1">&#39;{if($1&lt;&#34;m&#34;)  print NR &#34;&gt;&#34; $1; else print &#34;____&#34;}&#39;</span> user.txt
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">awk -F <span class="s1">&#39;:&#39;</span> <span class="s1">&#39;{print NR &#34;) &#34; $1}&#39;</span> demo.txt
+</span></span><span class="line"><span class="cl"><span class="c1"># 语句用&#39;&#39;隔开，&#39;&#39;内部字符用引号</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># NR表示当前行数</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -F 表示分隔符是什么</span>
+</span></span><span class="line"><span class="cl"> awk -F <span class="s1">&#39;:&#39;</span> <span class="s1">&#39;{if($1&lt;&#34;m&#34;)  print NR &#34;&gt;&#34; $1; else print &#34;____&#34;}&#39;</span> user.txt
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -451,6 +451,8 @@
 
   
 
+  
+
         </div>
       </div>
     </main>
@@ -490,7 +492,7 @@
 </svg>
 
   </a>
-   
+  
 </div>
 
 <div class="copyright">
@@ -566,6 +568,8 @@
     <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
     <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
   
+
+
 
 
 

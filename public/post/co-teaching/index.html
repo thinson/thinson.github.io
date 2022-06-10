@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.100.2" />
 
 
 <link rel="canonical" href="https://thinson.github.io/post/co-teaching/" />
@@ -379,30 +379,30 @@ Co-teaching的思想相当于把当前网络认为clean的样本交给另外的�
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Loss functions</span>
-<span class="k">def</span> <span class="nf">loss_coteaching</span><span class="p">(</span><span class="n">y_1</span><span class="p">,</span> <span class="n">y_2</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">forget_rate</span><span class="p">,</span> <span class="n">ind</span><span class="p">,</span> <span class="n">noise_or_not</span><span class="p">):</span>
-    <span class="n">loss_1</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">y_1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">reduce</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-    <span class="n">ind_1_sorted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">loss_1</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
-    <span class="n">loss_1_sorted</span> <span class="o">=</span> <span class="n">loss_1</span><span class="p">[</span><span class="n">ind_1_sorted</span><span class="p">]</span>
-
-    <span class="n">loss_2</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">y_2</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">reduce</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-    <span class="n">ind_2_sorted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">loss_2</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
-    <span class="n">loss_2_sorted</span> <span class="o">=</span> <span class="n">loss_2</span><span class="p">[</span><span class="n">ind_2_sorted</span><span class="p">]</span>
-
-    <span class="n">remember_rate</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">forget_rate</span>
-    <span class="n">num_remember</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">remember_rate</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">loss_1_sorted</span><span class="p">))</span>
-
-    <span class="n">pure_ratio_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">noise_or_not</span><span class="p">[</span><span class="n">ind</span><span class="p">[</span><span class="n">ind_1_sorted</span><span class="p">[:</span><span class="n">num_remember</span><span class="p">]]])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">num_remember</span><span class="p">)</span>
-    <span class="n">pure_ratio_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">noise_or_not</span><span class="p">[</span><span class="n">ind</span><span class="p">[</span><span class="n">ind_2_sorted</span><span class="p">[:</span><span class="n">num_remember</span><span class="p">]]])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">num_remember</span><span class="p">)</span>
-
-    <span class="n">ind_1_update</span><span class="o">=</span><span class="n">ind_1_sorted</span><span class="p">[:</span><span class="n">num_remember</span><span class="p">]</span>
-    <span class="n">ind_2_update</span><span class="o">=</span><span class="n">ind_2_sorted</span><span class="p">[:</span><span class="n">num_remember</span><span class="p">]</span>
-    <span class="c1"># exchange</span>
-    <span class="n">loss_1_update</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">y_1</span><span class="p">[</span><span class="n">ind_2_update</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">ind_2_update</span><span class="p">])</span>
-    <span class="n">loss_2_update</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">y_2</span><span class="p">[</span><span class="n">ind_1_update</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">ind_1_update</span><span class="p">])</span>
-
-    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">loss_1_update</span><span class="p">)</span><span class="o">/</span><span class="n">num_remember</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">loss_2_update</span><span class="p">)</span><span class="o">/</span><span class="n">num_remember</span><span class="p">,</span> <span class="n">pure_ratio_1</span><span class="p">,</span> <span class="n">pure_ratio_2</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Loss functions</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">loss_coteaching</span><span class="p">(</span><span class="n">y_1</span><span class="p">,</span> <span class="n">y_2</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">forget_rate</span><span class="p">,</span> <span class="n">ind</span><span class="p">,</span> <span class="n">noise_or_not</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss_1</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">y_1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">reduce</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ind_1_sorted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">loss_1</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss_1_sorted</span> <span class="o">=</span> <span class="n">loss_1</span><span class="p">[</span><span class="n">ind_1_sorted</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">loss_2</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">y_2</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">reduce</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ind_2_sorted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">loss_2</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss_2_sorted</span> <span class="o">=</span> <span class="n">loss_2</span><span class="p">[</span><span class="n">ind_2_sorted</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">remember_rate</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">forget_rate</span>
+</span></span><span class="line"><span class="cl">    <span class="n">num_remember</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">remember_rate</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">loss_1_sorted</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">pure_ratio_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">noise_or_not</span><span class="p">[</span><span class="n">ind</span><span class="p">[</span><span class="n">ind_1_sorted</span><span class="p">[:</span><span class="n">num_remember</span><span class="p">]]])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">num_remember</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pure_ratio_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">noise_or_not</span><span class="p">[</span><span class="n">ind</span><span class="p">[</span><span class="n">ind_2_sorted</span><span class="p">[:</span><span class="n">num_remember</span><span class="p">]]])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">num_remember</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">ind_1_update</span><span class="o">=</span><span class="n">ind_1_sorted</span><span class="p">[:</span><span class="n">num_remember</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ind_2_update</span><span class="o">=</span><span class="n">ind_2_sorted</span><span class="p">[:</span><span class="n">num_remember</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># exchange</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss_1_update</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">y_1</span><span class="p">[</span><span class="n">ind_2_update</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">ind_2_update</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss_2_update</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">y_2</span><span class="p">[</span><span class="n">ind_1_update</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">ind_1_update</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">loss_1_update</span><span class="p">)</span><span class="o">/</span><span class="n">num_remember</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">loss_2_update</span><span class="p">)</span><span class="o">/</span><span class="n">num_remember</span><span class="p">,</span> <span class="n">pure_ratio_1</span><span class="p">,</span> <span class="n">pure_ratio_2</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>forget rate更新代码：</p>
 <div class="highlight"><div class="chroma">
@@ -412,10 +412,10 @@ Co-teaching的思想相当于把当前网络认为clean的样本交给另外的�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># define drop rate schedule</span>
-<span class="n">rate_schedule</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">n_epoch</span><span class="p">)</span><span class="o">*</span><span class="n">forget_rate</span>
-<span class="n">rate_schedule</span><span class="p">[:</span><span class="n">args</span><span class="o">.</span><span class="n">num_gradual</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">forget_rate</span><span class="o">**</span><span class="n">args</span><span class="o">.</span><span class="n">exponent</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">num_gradual</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># define drop rate schedule</span>
+</span></span><span class="line"><span class="cl"><span class="n">rate_schedule</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">n_epoch</span><span class="p">)</span><span class="o">*</span><span class="n">forget_rate</span>
+</span></span><span class="line"><span class="cl"><span class="n">rate_schedule</span><span class="p">[:</span><span class="n">args</span><span class="o">.</span><span class="n">num_gradual</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">forget_rate</span><span class="o">**</span><span class="n">args</span><span class="o">.</span><span class="n">exponent</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">num_gradual</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>调用：</p>
 <div class="highlight"><div class="chroma">
@@ -423,8 +423,8 @@ Co-teaching的思想相当于把当前网络认为clean的样本交给另外的�
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">loss_1</span><span class="p">,</span> <span class="n">loss_2</span><span class="p">,</span> <span class="n">pure_ratio_1</span><span class="p">,</span> <span class="n">pure_ratio_2</span> <span class="o">=</span> <span class="n">loss_coteaching</span><span class="p">(</span><span class="n">logits1</span><span class="p">,</span> <span class="n">logits2</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">rate_schedule</span><span class="p">[</span><span class="n">epoch</span><span class="p">],</span> <span class="n">ind</span><span class="p">,</span> <span class="n">noise_or_not</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">loss_1</span><span class="p">,</span> <span class="n">loss_2</span><span class="p">,</span> <span class="n">pure_ratio_1</span><span class="p">,</span> <span class="n">pure_ratio_2</span> <span class="o">=</span> <span class="n">loss_coteaching</span><span class="p">(</span><span class="n">logits1</span><span class="p">,</span> <span class="n">logits2</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">rate_schedule</span><span class="p">[</span><span class="n">epoch</span><span class="p">],</span> <span class="n">ind</span><span class="p">,</span> <span class="n">noise_or_not</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -515,6 +515,8 @@ Co-teaching的思想相当于把当前网络认为clean的样本交给另外的�
 
   
 
+  
+
         </div>
       </div>
     </main>
@@ -554,7 +556,7 @@ Co-teaching的思想相当于把当前网络认为clean的样本交给另外的�
 </svg>
 
   </a>
-   
+  
 </div>
 
 <div class="copyright">
@@ -630,6 +632,8 @@ Co-teaching的思想相当于把当前网络认为clean的样本交给另外的�
     <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
     <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
   
+
+
 
 
 
