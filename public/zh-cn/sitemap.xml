@@ -23,6 +23,13 @@
   </url>
   
   <url>
+    <loc>https://thinson.github.io/tags/</loc>
+    <lastmod>2022-06-11T11:18:36+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://thinson.github.io/post/win%E9%85%8D%E7%BD%AEgit%E5%A4%9A%E8%B4%A6%E6%88%B7/</loc>
     <lastmod>2022-06-11T11:18:36+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -30,14 +37,21 @@
   </url>
   
   <url>
-    <loc>https://thinson.github.io/categories/</loc>
-    <lastmod>2022-06-10T16:34:39+08:00</lastmod>
+    <loc>https://thinson.github.io/tags/%E7%8E%AF%E5%A2%83/</loc>
+    <lastmod>2022-06-11T11:18:36+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://thinson.github.io/tags/</loc>
+    <loc>https://thinson.github.io/tags/%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2022-06-11T11:18:36+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://thinson.github.io/categories/</loc>
     <lastmod>2022-06-10T16:34:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -122,13 +136,6 @@
   
   <url>
     <loc>https://thinson.github.io/categories/python/</loc>
-    <lastmod>2022-01-17T17:21:00+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://thinson.github.io/tags/%E7%8E%AF%E5%A2%83/</loc>
     <lastmod>2022-01-17T17:21:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
