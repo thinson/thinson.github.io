@@ -6,7 +6,7 @@ baseURL = "https://thinson.github.io/"
 title = "Kang's Blog💻"
 enableRobotsTXT = true # 开关robots.txt
 enableEmoji = true
-theme = "noteworthy-zh"
+theme = "jane"
 
 hasCJKLanguage = true     # has chinese/japanese/korean ? # 自动检测是否包含 中文\日文\韩文
 paginate = 5              # Number of articles displayed on the homepage  # 首页每页显示的文章数
