@@ -4,12 +4,14 @@
 
 baseURL = "https://thinson.github.io/"
 title = "Kang's Blog💻"
-enableRobotsTXT = true
+enableRobotsTXT = true # 开关robots.txt
 enableEmoji = true
 theme = "noteworthy-zh"
 
 hasCJKLanguage = true     # has chinese/japanese/korean ? # 自动检测是否包含 中文\日文\韩文
 paginate = 5              # Number of articles displayed on the homepage  # 首页每页显示的文章数
+summaryLength = 30 # 自动摘要的长度，手动摘要请使用“<!--more-->”
+preserveTaxonomyNames = true # 直译：保留分类名称
 rssLimit = 20             # Limit Entry Count to Rss file # 限制 Rss 文章输出数量
 disqusShortname = ""      # disqus_shortname
 googleAnalytics = ""      # UA-XXXXXXXX-X
@@ -23,15 +25,39 @@ PygmentsCodefencesGuessSyntax = true
 PygmentsOptions = "linenos=table"
 
 
-# language support # en / zh-cn / other... translations present in i18n/
-defaultContentLanguage = "zh-cn"           # Default language to use
-[languages.en]
-  languageCode = "en"
-[languages.zh-cn]
-  languageCode = "zh-cn"
+DefaultContentLanguage = "zh"
+[languages] # 博客的语言选项，如果有多语言版本文章可以使用-参见wiki(默认关闭)
+  [languages.zh]
+    LanguageName = "中文"
+    title = "我的博客"
+    weight = 1
+#  [languages.en]
+#    LanguageName = "English"
+#    title = "My Blog"
+#    weight = 2
+#  [languages.it]
+#    LanguageName = "Italiano"
+#    title = "Il mio blog"
+#    weight = 2
 
+# language support # en / zh-cn / other... translations present in i18n/
+# defaultContentLanguage = "zh-cn"           # Default language to use
+# [languages.en]
+#   languageCode = "en"
+# [languages.zh-cn]
+#   languageCode = "zh-cn"
+
+
+[taxonomies]
+  tag = "tags" # 分类方式，默认为标签(tags)，暂时没有发现新的分类方式
 [author]                  # essential                     # 必需
-  name = "kang"
+  name = "KANG"
+
+# 是否渲染Markdown中的HTML代码
+#[markup.goldmark.renderer]
+#    unsafe = false
+
+
 
 [sitemap]                 # essential                     # 必需
   changefreq = "weekly"
@@ -47,17 +73,13 @@ defaultContentLanguage = "zh-cn"           # Default language to use
   name = "归档"
   weight = 20
   identifier = "archives"
-  url = "/post/"
+  url = "/posts/"
 [[menu.main]]
   name = "标签"
   weight = 30
   identifier = "tags"
   url = "/tags/"
-[[menu.main]]
-  name = "分类"
-  weight = 40
-  identifier = "categories"
-  url = "/categories/"
+
 # [[menu.main]]
 #   name = "external-link"
 #   weight = 50
@@ -65,14 +87,21 @@ defaultContentLanguage = "zh-cn"           # Default language to use
 
 
 [params]
+  math = true
   since = "2022"            # Site creation time          # 站点建立时间
   homeFullContent = false   # if false, show post summaries on home page. Otherwise show full content.
   rssFullContent = true     # if false, Rss feed instead of the summary
 
   # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
-  logoTitle = "😎 Kang"        # default: the title value    # 默认值: 上面设置的title值
+  logoTitle = "Kang"        # default: the title value    # 默认值: 上面设置的title值
   keywords = ["生活", "学术", "技术"]
   description = "This is the blog for Kang."
+
+  showReadMore = false # 是否显示“阅读全文”按钮
+
+  # Set enableKofi to true to enable the Ko-fi support button. Add your Ko-fi ID to link to your account.
+  enableKofi = false # 是否启用 Ko-fi
+  kofi = "" # Ko-fi ID
 
   # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
   dateFormatToUse = "2006-01-02"
@@ -81,21 +110,21 @@ defaultContentLanguage = "zh-cn"           # Default language to use
   # Some global options, you can also close or open something in front matter for a single post, see more information from `archetypes/default.md`.
   toc = true                                                                            # 是否开启目录
   photoswipe = true         # see https://github.com/dimsemenov/PhotoSwipe            # 是否启用PhotoSwipe（图片可点击）
-  contentCopyright = '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
+  # contentCopyright = '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
 
   # Link custom CSS and JS assets
   #   (relative to /static/css and /static/js respectively)
   customCSS = []            # if ['custom.css'], load '/static/css/custom.css' file
   customJS = []             # if ['custom.js'], load '/static/js/custom.js' file
 
-  [params.social]                                         # 社交链接
-    a-email = "mailto:kang_wu@foxmail.com"
+  #[params.social]                                         # 社交链接
+    #a-email = "mailto:kang_wu@foxmail.com"
     # b-stack-overflow = "http://localhost:1313"
     #c-twitter = "http://localhost:1313"
     #d-facebook = "http://localhost:1313"
     #e-linkedin = "http://localhost:1313"
     #f-google = "http://localhost:1313"
-    g-github = "https://github.com/thinson"
+    #g-github = "https://github.com/thinson"
     #h-weibo = "http://localhost:1313"
     #i-zhihu = "http://localhost:1313"
     #j-douban = "http://localhost:1313"
@@ -111,8 +140,39 @@ defaultContentLanguage = "zh-cn"           # Default language to use
     #t-youtube = "http://localhost:1313"
     #u-twitch = "http://localhost:1313"
 
+  email = "kang_wu@foxmail.com" # 邮箱地址
+  github = "https://github.com/thinson"
+
+  # 学术
+  # googlescholar = "#" # 谷歌学术
+
 [markup]
   defaultMarkdownHandler = "goldmark"  # blackfriday or goldmark
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+
+# 隐私设置: https://gohugo.io/about/hugo-and-gdpr/
+[privacy]
+  [privacy.disqus]
+    disable = false # 是否打开 注意，这里的false还是“否”的意思(不是双重否定)
+  [privacy.googleAnalytics]
+    anonymizeIP = true # 匿名IP
+    disable = false # 
+    respectDoNotTrack = false # 是否尊重访问者发送的“请勿追踪(Do Not Track)”请求
+    useSessionStorage = false # 是否存储会话记录
+  # 以下的国内不常用
+  [privacy.instagram]
+    disable = false
+    simple = false
+  [privacy.twitter]
+    disable = false
+    enableDNT = false
+    simple = false
+  [privacy.vimeo]
+    disable = false
+    simple = false
+  [privacy.youtube]
+    disable = false
+    privacyEnhanced = true
