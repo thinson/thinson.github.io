@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>我的博客</title>
+    <title>Kang&#39;s Blog💻</title>
     <link>https://thinson.github.io/</link>
-    <description>Recent content on 我的博客</description>
+    <description>Recent content on Kang&#39;s Blog💻</description>
+    <image>
+      <title>Kang&#39;s Blog💻</title>
+      <url>https://thinson.github.io/static/img/</url>
+      <link>https://thinson.github.io/static/img/</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 17 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thinson.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -12,7 +17,9 @@
       <pubDate>Mon, 17 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://thinson.github.io/about/</guid>
-      <description>🏠 关于本站 建立这个博客的目的就是整理平时学习的笔记，分享日常</description>
+      <description>🏠 关于本站 建立这个博客的目的就是整理平时学习的笔记，分享日常生活的点点滴滴。
+👨‍💻 博主是谁 我是一名普通的信息与通信专业的研二学生（2022年更新），研究方向主要是计算机视觉，深度学习，遥感图像处理。
+GitHub: thinson(Kang Wu) BiliBili: 秋名山8086 GItee:kang wu</description>
     </item>
     
     <item>
@@ -21,7 +28,7 @@
       <pubDate>Mon, 17 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://thinson.github.io/posts/hello-world/</guid>
-      <description>之前的博客闲置太久，源文件丢失，所以用hugo重新组织了我的</description>
+      <description>之前的博客闲置太久，源文件丢失，所以用hugo重新组织了我的博客，欢迎大家!!!!</description>
     </item>
     
   </channel>
